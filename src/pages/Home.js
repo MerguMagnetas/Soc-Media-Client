@@ -30,7 +30,7 @@ function Home() {
           console.log(error);
         });
     }
-  }, []);
+  }, [navigate]);
 
   const likeAPost = (postId) => {
     axios

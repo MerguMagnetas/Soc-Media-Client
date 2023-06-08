@@ -14,7 +14,7 @@ function CreatePost() {
     if (!localStorage.getItem("accessToken")) {
       navigate("/login");
     }
-  }, []);
+  }, [navigate]);
 
   const initialValues = {
     title: "",
@@ -47,7 +47,7 @@ function CreatePost() {
           <label>Title: </label>
           <ErrorMessage name="title" component="span" />
           <Field
-            autoComplete="off" // Updated attribute
+            autoComplete="off"
             id="inputCreatePost"
             name="title"
             placeholder="(Ex. Title...)"
@@ -55,7 +55,7 @@ function CreatePost() {
           <label>Post: </label>
           <ErrorMessage name="postText" component="span" />
           <Field
-            autoComplete="off" // Updated attribute
+            autoComplete="off"
             id="inputCreatePost"
             name="postText"
             placeholder="(Ex. Post...)"
