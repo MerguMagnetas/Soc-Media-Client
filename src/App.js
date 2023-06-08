@@ -21,7 +21,7 @@ function App() {
   useEffect(() => {
     const checkAuthStatus = async () => {
       try {
-        const response = await axios.get('http://localhost:3001/auth/auth', {
+        const response = await axios.get('https://soc-media-project.herokuapp.com/auth/auth', {
           headers: {
             accessToken: localStorage.getItem('accessToken'),
           },

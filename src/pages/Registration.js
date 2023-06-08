@@ -14,7 +14,7 @@ function Registration() {
     password: Yup.string().min(5).max(20).required(),
   });
   const onSubmit = (data) => {
-    axios.post("http://localhost:3001/auth", data).then((response) => {});
+    axios.post("https://soc-media-project.herokuapp.com", data).then((response) => {});
   };
   return (
     <div>

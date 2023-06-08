@@ -19,7 +19,7 @@ function Home() {
       navigate('/login');
     } else {
       axios
-        .get('http://localhost:3001/posts', {
+        .get('https://soc-media-project.herokuapp.com/posts', {
           headers: { accessToken: localStorage.getItem('accessToken') },
         })
         .then((response) => {
@@ -35,7 +35,7 @@ function Home() {
   const likeAPost = (postId) => {
     axios
       .post(
-        'http://localhost:3001/likes',
+        'https://soc-media-project.herokuapp.com/likes',
         { PostId: postId },
         { headers: { accessToken: localStorage.getItem('accessToken') } }
       )

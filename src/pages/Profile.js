@@ -7,7 +7,7 @@ function Profile() {
   const [username, setUsername] = useState('');
 
   useEffect(() => {
-    axios.get(`http://localhost:3001/auth/basicinfo/${id}`).then((response) => {
+    axios.get(`https://soc-media-project.herokuapp.com/auth/basicinfo/${id}`).then((response) => {
       setUsername(response.data.username);
     });
   }, [id]); // Include 'id' in the dependency array
