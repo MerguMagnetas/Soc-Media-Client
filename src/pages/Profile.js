@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
 function Profile() {
   let { id } = useParams();
-  const [username, setUsername] = useState('')
+  const [username, setUsername] = useState('');
 
   useEffect(() => {
     axios.get(`http://localhost:3001/auth/basicinfo/${id}`).then((response) => {
-      setUsername(response.data.username)
-    })
-  }, [])
+      setUsername(response.data.username);
+    });
+  }, [id]); // Include 'id' in the dependency array
 
   return (
     <div className='profilePageContnainer'>
@@ -19,7 +19,7 @@ function Profile() {
       </div>
       <div className='listOfPosts'></div>
     </div>
-  )
+  );
 }
 
-export default Profile
+export default Profile;

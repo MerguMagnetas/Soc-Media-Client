@@ -6,17 +6,9 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../helpers/AuthContext";
 
 function CreatePost() {
-  const {authState} = useContext(AuthContext);
+  const { authState } = useContext(AuthContext);
 
   let navigate = useNavigate();
-
-  const pushToRoute = (routePath) => {
-    navigate(routePath, { replace: false });
-  };
-  const initialValues = {
-    title: "",
-    postText: "", 
-  };
 
   useEffect(() => {
     if (!localStorage.getItem("accessToken")) {
@@ -24,16 +16,24 @@ function CreatePost() {
     }
   }, []);
 
+  const initialValues = {
+    title: "",
+    postText: "",
+  };
+
   const validationSchema = Yup.object().shape({
     title: Yup.string().required("You must input a Title!"),
-    postText: Yup.string().required(),
+    postText: Yup.string().required("You must input a Post!"),
   });
 
   const onSubmit = (data) => {
-
-    axios.post("http://localhost:3001/posts", data, {headers: {accessToken: localStorage.getItem('accessToken')}}).then((response) => {
-      pushToRoute("/");
-    });
+    axios
+      .post("http://localhost:3001/posts", data, {
+        headers: { accessToken: localStorage.getItem("accessToken") },
+      })
+      .then((response) => {
+        navigate("/");
+      });
   };
 
   return (
@@ -47,7 +47,7 @@ function CreatePost() {
           <label>Title: </label>
           <ErrorMessage name="title" component="span" />
           <Field
-            autocomplete="off"
+            autoComplete="off" // Updated attribute
             id="inputCreatePost"
             name="title"
             placeholder="(Ex. Title...)"
@@ -55,7 +55,7 @@ function CreatePost() {
           <label>Post: </label>
           <ErrorMessage name="postText" component="span" />
           <Field
-            autocomplete="off"
+            autoComplete="off" // Updated attribute
             id="inputCreatePost"
             name="postText"
             placeholder="(Ex. Post...)"
