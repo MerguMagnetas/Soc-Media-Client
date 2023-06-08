@@ -13,11 +13,11 @@ function Post() {
   const { authState } = useContext(AuthContext)
 
   useEffect(() => {
-    axios.get(`http://localhost:3001/posts/byId/${id}`).then((response) => {
+    axios.get(`https://soc-media-project.herokuapp.com/posts/byId/${id}`).then((response) => {
       setPostObject(response.data);
     });
 
-    axios.get(`http://localhost:3001/comments/${id}`).then((response) => {
+    axios.get(`https://soc-media-project.herokuapp.com/comments/${id}`).then((response) => {
       setComments(response.data);
     });
   }, [id]);
@@ -25,7 +25,7 @@ function Post() {
   const addComment = () => {
     axios
       .post(
-        "http://localhost:3001/comments",
+        "https://soc-media-project.herokuapp.com/comments",
         {
           commentBody: newComment,
           PostId: id,
